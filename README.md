@@ -3,17 +3,17 @@ This is a basic test script written in Python 3.6 to cover commit request via Gi
 
 ## Introduction
 This script is intended to test all required parameters(fields) for particular commit and verify that they can be successfully retrieved from the last GitHub commits made by user. The approach is to check one(latest) commit and its fields and get total number of commits provided by current user. To make this possible, at first, test script receives authorization token from Github server to pass OAuth v.2 authorization. This is done based on application key and secret key from Github application created by ikostiuk user. 
-This test requires additional development and refactoring in order to fully cover commit functionality and be easy-readable and maintainable. Also, test does not prepared predefined commit for itself, and relies on fact that there is at least one commit already pushed to repository. This is test for /commit endpoint, but not whole commit functionality.
+This test requires additional development and refactoring in order to fully cover /commit functionality and be easy-readable and maintainable. Also, test does not prepare new commit instance for itself, and relies on fact that there is at least one commit already pushed to repository. Generally, this is test for /commit endpoint, but not whole commit functionality.
 
 ## Setup
 To run the test on your machine you need to make sure that:
-- Python 3 is properly installed on your PC. (https://www.python.org/downloads/). Check by typing 'python -v' in terminal.
-- Pip installer is installed on the machine. https://pip.pypa.io/en/stable/installing/
-- Requests and Unittest python modules are installed. Run `pip install requests`, `pip install requests` commands for this.
+- Python 3 is properly installed. Check by typing 'python -v' in terminal, and if not, visit https://www.python.org/downloads.
+- `Pip` installer is installed on the machine. https://pip.pypa.io/en/stable/installing/
+- `Requests` and `Unittest` python modules are installed. Run `pip install requests`, `pip install requests` commands for this.
 
 ## Test run
-To launch test and verify Github Commit feature download GitHubTest.py file to particular folder. 
-Navigate to folder with GitHubTest.py file in the terminal and run next command there:
+To launch test and verify Github Commit feature download `GitHubTest.py` file to particular folder. 
+Navigate to folder with `GitHubTest.py` file in the terminal and run next command there:
 
 *python -m unittest GitHubTest.py*
 
