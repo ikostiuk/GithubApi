@@ -12,19 +12,19 @@ COMMIT_ENDPOINT = 'https://api.github.com/repos/%s/%s/commit' % (USER_NAME, REPO
 AUTHOR_NAME = 'Ivan Kostiuk'
 AUTHOR_EMAIL = "4174853+ikostiuk@users.noreply.github.com"
 
+
 class GithubCommitsTest(unittest.TestCase):
     def __init__(self, *a, **kw):
         super(GithubCommitsTest, self).__init__(*a, **kw)
         self.commits = []
         self.last_commit = {}
-        self.shaValue = ''
 
     @classmethod
     def setUpClass(cls):
         requests.get("https://api.github.com/users/whatever?client_id=%s&client_secret=%s" % (APP_KEY, APP_SECRET))
 
     def setUp(self):
-        response = requests.get("https://api.github.com/repos/ikostiuk/GithubApi/commits")
+        response = requests.get("https://api.github.com/repos/%s/%s/commits" % (USER_NAME, REPO_NAME))
         self.commits = json.loads(response.text)
         self.last_commit = self.commits[0]
 
@@ -32,10 +32,11 @@ class GithubCommitsTest(unittest.TestCase):
         print('\nTotal number of commits: %d' % len(self.commits))
 
     def test_verifies_url_commit_fields(self):
+        print('\nVerifying url fields info')
         sha_value = self.last_commit['sha']
         self.assertEqual(self.last_commit['url'], COMMIT_ENDPOINT + "s/" + sha_value)
         self.assertIn(sha_value, self.last_commit['html_url'])
-        self.assertEqual(self.last_commit['comments_url'], COMMIT_ENDPOINT + "/" + sha_value + "/comments")
+        self.assertEqual(self.last_commit['comments_url'], COMMIT_ENDPOINT + "s/" + sha_value + "/comments")
 
     def test_verifies_commit_author_info(self):
         print('\nVerifying commit author info')
@@ -78,12 +79,12 @@ class GithubCommitsTest(unittest.TestCase):
         self.assertFalse(self.last_commit['author']['site_admin'])
 
     def test_verifies_committer_fields_info(self):
-        pass
-        # Another bunch of committer fields
+        print('\nVerifying committer fields info')
+        # Another bunch of assertions for committer fields
 
     def test_verifies_parents_fields_info(self):
-        pass
-        # Another bunch of parents fields
+        print('\nVerifying commit parents fields info')
+        # Another bunch of assertions for parents fields
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
