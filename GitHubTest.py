@@ -2,15 +2,15 @@ import unittest
 import json
 import requests
 
-APP_KEY = 'a65a3ed2050561bad281'
-APP_SECRET = 'caea156d62039d353d1bae55fa8a8361e1e31697'
+APP_KEY = 'app_key'
+APP_SECRET = 'app_secret'
 
-USER_NAME = 'ikostiuk'
+USER_NAME = 'username'
 REPO_NAME = 'GithubApi'
 COMMIT_ENDPOINT = 'https://api.github.com/repos/%s/%s/commit' % (USER_NAME, REPO_NAME)
 
 AUTHOR_NAME = 'Ivan Kostiuk'
-AUTHOR_EMAIL = "4174853+ikostiuk@users.noreply.github.com"
+AUTHOR_EMAIL = "email@users.noreply.github.com"
 
 
 class GithubCommitsTest(unittest.TestCase):
